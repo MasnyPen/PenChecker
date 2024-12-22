@@ -1,0 +1,5 @@
+# General
+general:
+  command_not_from_console: "&eNie możesz wykonać tej komendy z konsoli."
+  no_permission: "&eNie masz uprawnień do wykonania tej komendy."
+  reload: "&6Konfiguracja została przeładowana."
