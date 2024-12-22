@@ -8,3 +8,6 @@ description: Plugin na sprawdzanie
 commands:
   setchecklocation:
     description: Ustaw lokacje sprawdzania
+  playercheck:
+    description: Sprawdz Gracza
+    aliases: ["check"]

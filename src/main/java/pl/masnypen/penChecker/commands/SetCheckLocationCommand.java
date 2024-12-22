@@ -30,7 +30,7 @@ public class SetCheckLocationCommand implements CommandExecutor {
                     file.createNewFile();
                 } catch (IOException e) {
                     System.out.println("Can't load file! Error.");
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("spawn.error","&eWystąpił błąd przy zapisywaniu" ));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("commands.spawn.error","&eWystąpił błąd przy zapisywaniu" ));
                     return false;
                 }
             }
@@ -38,9 +38,9 @@ public class SetCheckLocationCommand implements CommandExecutor {
             YamlConfiguration modifyFile = YamlConfiguration.loadConfiguration(file);
             modifyFile.set("world-name",player.getLocation().getWorld().getName());
             modifyFile.set("world", player.getLocation().getWorld().getUID().toString());
-            modifyFile.set("x", player.getLocation().getBlockX());
-            modifyFile.set("y", player.getLocation().getBlockY());
-            modifyFile.set("z", player.getLocation().getBlockZ());
+            modifyFile.set("x", player.getLocation().getX());
+            modifyFile.set("y", player.getLocation().getY());
+            modifyFile.set("z", player.getLocation().getZ());
             modifyFile.set("yaw", player.getLocation().getYaw());
             modifyFile.set("pitch", player.getLocation().getPitch());
 
@@ -48,12 +48,12 @@ public class SetCheckLocationCommand implements CommandExecutor {
                 modifyFile.save(file);
             } catch (IOException e) {
                 System.out.println("Can't save file! Error.");
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("spawn.error","&eWystąpił błąd przy zapisywaniu" ));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("commands.spawn.error","&eWystąpił błąd przy zapisywaniu" ));
                 return false;
             }
 
 
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("spawn.set", "&6Ustawiono spawn sprawdzania!"));
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("commands.spawn.set", "&6Ustawiono spawn sprawdzania!"));
 
 
         } else {

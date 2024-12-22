@@ -2,9 +2,16 @@ package pl.masnypen.penChecker;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.masnypen.penChecker.commands.PlayerCheckCommand;
 import pl.masnypen.penChecker.commands.SetCheckLocationCommand;
+import pl.masnypen.penChecker.events.isCheckerEvent;
 import pl.masnypen.penChecker.manager.LangManager;
+import pl.masnypen.penChecker.utils.Checked;
+
+import java.util.HashMap;
+import java.util.UUID;
 
 
 public final class Main extends JavaPlugin {
@@ -39,9 +46,12 @@ public final class Main extends JavaPlugin {
 
     public void registerCommands() {
         getCommand("setchecklocation").setExecutor(new SetCheckLocationCommand(this));
+        PlayerCheckCommand playerCheckCommand = new PlayerCheckCommand(this);
+        getCommand("playercheck").setExecutor(playerCheckCommand);
+        getCommand("playercheck").setTabCompleter(playerCheckCommand);
     }
     public void registerEvents() {
-
+        Bukkit.getPluginManager().registerEvents(new isCheckerEvent(), this);
     }
 
     @Override
@@ -51,4 +61,7 @@ public final class Main extends JavaPlugin {
 
         super.reloadConfig();
     }
+
+
+    public HashMap<UUID, Checked> checkedList = new HashMap<>();
 }

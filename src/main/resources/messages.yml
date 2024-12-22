@@ -4,7 +4,21 @@ general:
   no_permission: "&eNie masz uprawnień do wykonania tej komendy."
   reload: "&6Konfiguracja została przeładowana."
 
-# Spawn Command
-spawn:
-  set: "&6Ustawiono spawn sprawdzania!"
-  error: "&eWystąpił błąd przy zapisywaniu"
+commands:
+  spawn:
+    set: "&6Ustawiono spawn sprawdzania!"
+    error: "&eWystąpił błąd przy zapisywaniu"
+  playercheck:
+    usage: "&6Złe użycie komendy! /playercheck <gracz>"
+    # variables: {player}
+    senderMessage: "&6Sprawdzasz {player}"
+    # variables: {player}, {sender}
+    broadcastMessage: "&6{player} Jest &cSPRAWDZANY &6przez {sender}"
+
+    target:
+      # variables: {sender}
+      message: "&6Jesteś sprawdzany przez {sender}"
+      title: "&4JESTES SPRAWDZANY"
+      subtitle: "&7Wbij na discorda na kanal głosowy jestes-sprawdzany"
+
+

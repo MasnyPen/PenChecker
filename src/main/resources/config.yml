@@ -1,1 +1,5 @@
 prefix: "&7[&bPenChecker&7]"
+
+# variables: {player}
+cheaterCmd: "ban {player} cheaty"
+logoutCmd: "tempban {player} 30d Wylogowanie podczas sprawdzania!"
