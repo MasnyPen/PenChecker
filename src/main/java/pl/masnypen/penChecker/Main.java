@@ -3,6 +3,7 @@ package pl.masnypen.penChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.masnypen.penChecker.commands.SetCheckLocationCommand;
 import pl.masnypen.penChecker.manager.LangManager;
 
 
@@ -37,7 +38,7 @@ public final class Main extends JavaPlugin {
     }
 
     public void registerCommands() {
-
+        getCommand("setchecklocation").setExecutor(new SetCheckLocationCommand(this));
     }
     public void registerEvents() {
 

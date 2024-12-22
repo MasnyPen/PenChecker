@@ -4,3 +4,7 @@ main: pl.masnypen.penChecker.Main
 api-version: '1.20'
 authors: [ MasnyPen ]
 description: Plugin na sprawdzanie
+
+commands:
+  setchecklocation:
+    description: Ustaw lokacje sprawdzania
