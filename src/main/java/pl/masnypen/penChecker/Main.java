@@ -8,6 +8,7 @@ import pl.masnypen.penChecker.commands.CheaterCommand;
 import pl.masnypen.penChecker.commands.ClearCommand;
 import pl.masnypen.penChecker.commands.PlayerCheckCommand;
 import pl.masnypen.penChecker.commands.SetCheckLocationCommand;
+import pl.masnypen.penChecker.events.CheckedLogout;
 import pl.masnypen.penChecker.events.isCheckerEvent;
 import pl.masnypen.penChecker.manager.LangManager;
 import pl.masnypen.penChecker.utils.Checked;
@@ -56,6 +57,7 @@ public final class Main extends JavaPlugin {
     }
     public void registerEvents() {
         Bukkit.getPluginManager().registerEvents(new isCheckerEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new CheckedLogout(this), this);
     }
 
     @Override

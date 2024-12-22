@@ -46,7 +46,7 @@ public class PlayerCheckCommand implements CommandExecutor, TabCompleter {
                 }, 0L, 200L).getTaskId();
 
 
-                main.checkedList.put(player.getUniqueId(), new Checked(player.getLocation(), taskID));
+                main.checkedList.put(player.getUniqueId(), new Checked(player.getLocation(), taskID, ((Player) sender).getUniqueId()));
                 main.adminsChecked.put(((Player) sender).getUniqueId(), player.getUniqueId());
 
                 YamlConfiguration checkspawn = YamlConfiguration.loadConfiguration(new File(main.getDataFolder(), "checkspawn.yml"));

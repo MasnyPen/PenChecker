@@ -35,5 +35,11 @@ commands:
     broadcast: "&b{player}&6 został skazany!"
     sender: "&6Pomyślnie skazano &b{player}&6!"
 
+events:
+  logout:
+    broadcast: "&b{player}&6 wyszedł podczas sprawdzania!"
+    sender: "&b{player}&6 wyszedł z serwera oraz został ukarany!"
+
+
 
 
