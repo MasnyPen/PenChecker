@@ -12,3 +12,5 @@ commands:
     description: Sprawdz Gracza
   czysty:
     description: Sprawdzanie czysty
+  skazany:
+    description: tego typu benc

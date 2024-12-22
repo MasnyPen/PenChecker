@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.masnypen.penChecker.commands.CheaterCommand;
 import pl.masnypen.penChecker.commands.ClearCommand;
 import pl.masnypen.penChecker.commands.PlayerCheckCommand;
 import pl.masnypen.penChecker.commands.SetCheckLocationCommand;
@@ -51,6 +52,7 @@ public final class Main extends JavaPlugin {
         getCommand("sprawdz").setExecutor(playerCheckCommand);
         getCommand("sprawdz").setTabCompleter(playerCheckCommand);
         getCommand("czysty").setExecutor(new ClearCommand(this));
+        getCommand("skazany").setExecutor(new CheaterCommand(this));
     }
     public void registerEvents() {
         Bukkit.getPluginManager().registerEvents(new isCheckerEvent(), this);

@@ -3,6 +3,7 @@ general:
   command_not_from_console: "&eNie możesz wykonać tej komendy z konsoli."
   no_permission: "&eNie masz uprawnień do wykonania tej komendy."
   reload: "&6Konfiguracja została przeładowana."
+  no_target_player: "&6Nie sprawdzasz żadnego gracza!"
 
 commands:
   spawn:
@@ -24,10 +25,15 @@ commands:
     # variables: {player}
     broadcast: "&b{player}&6 jest czysty!"
     sender: "&6Pomyślnie oczyszczono &b{player}&6 z zarzutów!"
-    no_target_player: "&6Nie sprawdzasz żadnego gracza!"
+
     target:
       message: "&7Oczyszczono cie z zarzutów!"
       title: "&6Jesteś czysty!"
       subtitle: "&7Oczyszczono cie z zarzutów!"
+  skazany:
+    # variables: {player}
+    broadcast: "&b{player}&6 został skazany!"
+    sender: "&6Pomyślnie skazano &b{player}&6!"
+
 
 
