@@ -1,0 +1,6 @@
+name: PenChecker
+version: '1.0-SNAPSHOT'
+main: pl.masnypen.penChecker.Main
+api-version: '1.20'
+authors: [ MasnyPen ]
+description: Plugin na sprawdzanie
