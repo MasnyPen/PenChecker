@@ -6,8 +6,9 @@ authors: [ MasnyPen ]
 description: Plugin na sprawdzanie
 
 commands:
-  setchecklocation:
+  ustawspawnsprawdzania:
     description: Ustaw lokacje sprawdzania
-  playercheck:
+  sprawdz:
     description: Sprawdz Gracza
-    aliases: ["check"]
+  czysty:
+    description: Sprawdzanie czysty
