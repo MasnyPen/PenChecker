@@ -4,6 +4,8 @@ general:
   no_permission: "&eNie masz uprawnień do wykonania tej komendy."
   reload: "&6Konfiguracja została przeładowana."
   no_target_player: "&6Nie sprawdzasz żadnego gracza!"
+  cannot_check_self: "&6Nie możesz sprawdzić samego siebie!"
+
 
 commands:
   spawn:

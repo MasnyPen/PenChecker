@@ -27,6 +27,10 @@ public class PlayerCheckCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (sender instanceof Player) {
             if (args.length == 1 && Bukkit.getPlayerExact(args[0]) != null) {
+                if (sender.getName().equals(args[0])) {
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("general.cannot_check_self", "&6Nie możesz sprawdzić samego siebie!"));
+                    return false;
+                }
                 Player player = Bukkit.getPlayerExact(args[0]);
 
                 // sender
@@ -51,6 +55,7 @@ public class PlayerCheckCommand implements CommandExecutor, TabCompleter {
 
                 YamlConfiguration checkspawn = YamlConfiguration.loadConfiguration(new File(main.getDataFolder(), "checkspawn.yml"));
                 player.teleport(new Location(Bukkit.getWorld(checkspawn.getString("world-name")), checkspawn.getDouble("x"),checkspawn.getDouble("y"), checkspawn.getDouble("z"), (float) checkspawn.getDouble("yaw"), (float) checkspawn.getDouble("pitch")));
+                return true;
             } else {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("commands.sprawdz.usage", "&6Złe użycie komendy! /playercheck <gracz>") );
             }
