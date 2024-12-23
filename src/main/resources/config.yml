@@ -8,3 +8,5 @@ flags:
   enabled: true
   # flags: build, move, cmd, interact, chat, enderpearl, drop
   flags: ["build", "cmd", "interact", "chat", "enderpearl", "drop", "pickup"]
+
+admin_tp: true

@@ -36,11 +36,11 @@ public class CheaterCommand implements CommandExecutor {
                 Bukkit.broadcastMessage(main.langManager.getMessage("commands.skazany.broadcast", "&b{player}&6 został skazany!").replace("{player}", target.getName()));
                 Bukkit.broadcastMessage("");
                 Bukkit.broadcastMessage("");
-
-                Bukkit.dispatchCommand(sender, main.getConfig().getString("cheaterCmd").replace("{player}", target.getName()));
-
                 main.checkedList.remove(targetId);
                 main.adminsChecked.remove(((Player) sender).getUniqueId());
+
+                Bukkit.dispatchCommand(sender, main.getConfig().getString("cheaterCmd").replace("{player}", target.getName()));
+                return true;
             } else {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("skazany.no_target_player", "&6Nie sprawdzasz żadnego gracza!") );
             }

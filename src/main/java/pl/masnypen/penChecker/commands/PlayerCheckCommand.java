@@ -59,7 +59,7 @@ public class PlayerCheckCommand implements CommandExecutor, TabCompleter {
 
                 main.checkedList.put(player.getUniqueId(), new Checked(player.getLocation(), taskID, ((Player) sender).getUniqueId()));
                 main.adminsChecked.put(((Player) sender).getUniqueId(), player.getUniqueId());
-                System.out.println(player.teleport(new Location(Bukkit.getWorld(checkspawn.getString("world-name")), checkspawn.getDouble("x"),checkspawn.getDouble("y"), checkspawn.getDouble("z"), (float) checkspawn.getDouble("yaw"), (float) checkspawn.getDouble("pitch"))));
+                player.teleport(new Location(Bukkit.getWorld(checkspawn.getString("world-name")), checkspawn.getDouble("x"),checkspawn.getDouble("y"), checkspawn.getDouble("z"), (float) checkspawn.getDouble("yaw"), (float) checkspawn.getDouble("pitch")));
 
                 return true;
             } else {
