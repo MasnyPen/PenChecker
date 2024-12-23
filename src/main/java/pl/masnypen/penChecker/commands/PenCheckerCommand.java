@@ -52,7 +52,6 @@ public class PenCheckerCommand implements CommandExecutor, TabCompleter {
         sender.sendMessage(ChatColor.GOLD + "/penchecker reload - Przeładuj plugin");
         sender.sendMessage(ChatColor.GOLD + "/penchecker help - Wyświetl pomoc");
         sender.sendMessage(ChatColor.GOLD + "/penchecker version - Wyświetl wersję pluginu");
-        sender.sendMessage(ChatColor.GOLD + "/penchecker version - Wyświetl wersję pluginu");
     }
     private void showVersion(CommandSender sender) {
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + ChatColor.GOLD + "Plugin PenCore w wersji" + " " + ChatColor.RED + main.getDescription().getVersion());
