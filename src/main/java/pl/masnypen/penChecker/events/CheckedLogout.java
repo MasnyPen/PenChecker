@@ -30,6 +30,9 @@ public class CheckedLogout implements Listener {
 
             Bukkit.getScheduler().cancelTask(checked.taskID);
             target.teleport(checked.location);
+            if (main.getConfig().getBoolean("admin_tp")) {
+                sender.teleport(checked.locationSender);
+            }
 
             sender.sendMessage(main.langManager.getMessage("commands.logout.sender", "&b{player}&6 wyszedł z serwera oraz został ukarany!").replace("{player}", target.getName()));
 

@@ -26,6 +26,9 @@ public class ClearCommand implements CommandExecutor {
             Player target = Bukkit.getPlayer(targetId);
 
             target.teleport(checked.location);
+            if (main.getConfig().getBoolean("admin_tp")) {
+                ((Player) sender).teleport(checked.locationSender);
+            }
 
             Bukkit.getScheduler().cancelTask(checked.taskID);
 

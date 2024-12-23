@@ -28,6 +28,9 @@ public class CheaterCommand implements CommandExecutor {
 
                 Bukkit.getScheduler().cancelTask(checked.taskID);
                 target.teleport(checked.location);
+                if (main.getConfig().getBoolean("admin_tp")) {
+                    ((Player) sender).teleport(checked.locationSender);
+                }
 
                 sender.sendMessage(main.langManager.getMessage("commands.skazany.sender", "&6Pomyślnie skazano &b{player}&6!").replace("{player}", target.getName()));
 
