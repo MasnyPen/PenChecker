@@ -23,10 +23,10 @@ public final class Main extends JavaPlugin {
         this.saveDefaultConfig();
 
         this.langManager = new LangManager(getDataFolder(), this);
-        
+
         getLogger().info("Zostal wlaczony!");
-        getLogger().info("  PenChecker!");
-        getLogger().info("  Wersja 1.0");
+        getLogger().info("PenChecker!");
+        getLogger().info("Wersja 1.0");
 
         registerCommands();
         registerEvents();
