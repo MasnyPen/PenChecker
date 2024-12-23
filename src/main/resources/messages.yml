@@ -29,7 +29,7 @@ commands:
 
   sprawdz:
     # Wiadomość wyświetlana, gdy komenda jest użyta w zły sposób.
-    usage: "&6Złe użycie komendy! /playercheck <gracz>"
+    usage: "&6Złe użycie komendy! /sprawdz <gracz>"
 
     # Wiadomość do gracza, który rozpoczyna sprawdzanie innego gracza.
     senderMessage: "&6Sprawdzasz {player}"
