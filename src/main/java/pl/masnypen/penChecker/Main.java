@@ -48,7 +48,7 @@ public final class Main extends JavaPlugin {
     }
 
     public void registerCommands() {
-        getCommand("ustawspawnsprawdzania").setExecutor(new SetCheckLocationCommand(this));
+        getCommand("ustawsprawdzania").setExecutor(new SetCheckLocationCommand(this));
         PlayerCheckCommand playerCheckCommand = new PlayerCheckCommand(this);
         getCommand("sprawdz").setExecutor(playerCheckCommand);
         getCommand("sprawdz").setTabCompleter(playerCheckCommand);
@@ -56,7 +56,7 @@ public final class Main extends JavaPlugin {
         getCommand("skazany").setExecutor(new CheaterCommand(this));
     }
     public void registerEvents() {
-        Bukkit.getPluginManager().registerEvents(new isCheckerEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new isCheckerEvent(this), this);
         Bukkit.getPluginManager().registerEvents(new CheckedLogout(this), this);
     }
 

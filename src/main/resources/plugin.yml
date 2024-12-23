@@ -2,15 +2,39 @@ name: PenChecker
 version: '1.0-SNAPSHOT'
 main: pl.masnypen.penChecker.Main
 api-version: '1.20'
-authors: [ MasnyPen ]
-description: Plugin na sprawdzanie
+author: MasnyPen
+description: Plugin na sprawdzanie graczy.
 
 commands:
-  ustawspawnsprawdzania:
-    description: Ustaw lokacje sprawdzania
+  ustawsprawdzania:
+    description: Ustaw lokację, gdzie gracze będą sprawdzani.
+    usage: /ustawspawnsprawdzania
+    permission: penchecker.admin
+    permission-message: "&cNie masz uprawnień do ustawienia lokacji sprawdzania!"
+
   sprawdz:
-    description: Sprawdz Gracza
+    description: Rozpocznij sprawdzanie danego gracza.
+    usage: /sprawdz <gracz>
+    permission: penchecker.use
+    permission-message: "&cNie masz uprawnień do sprawdzania graczy!"
+
   czysty:
-    description: Sprawdzanie czysty
+    description: Oznacz sprawdzanego gracza jako czystego.
+    usage: /czysty <gracz>
+    permission: penchecker.use
+    permission-message: "&cNie masz uprawnień, aby oznaczyć gracza jako czystego!"
+
   skazany:
-    description: tego typu benc
+    description: Oznacz gracza jako winnego (cheatera).
+    usage: /skazany <gracz>
+    permission: penchecker.use
+    permission-message: "&cNie masz uprawnień, aby oznaczyć gracza jako skazanego!"
+
+permissions:
+  penchecker.admin:
+    description: Uprawnienia administracyjne do zarządzania spawnem i konfiguracją.
+    default: op
+
+  penchecker.use:
+    description: Uprawnienia do wykonywania podstawowych komend sprawdzania.
+    default: op

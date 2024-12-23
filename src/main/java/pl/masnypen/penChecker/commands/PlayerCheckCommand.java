@@ -27,11 +27,19 @@ public class PlayerCheckCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (sender instanceof Player) {
             if (args.length == 1 && Bukkit.getPlayerExact(args[0]) != null) {
+                YamlConfiguration checkspawn = YamlConfiguration.loadConfiguration(new File(main.getDataFolder(), "checkspawn.yml"));
+
+                if (!checkspawn.contains("world-name") || !checkspawn.contains("world") || !checkspawn.contains("x") || !checkspawn.contains("y") || !checkspawn.contains("z") || !checkspawn.contains("yaw") || !checkspawn.contains("pitch")) {
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("general.no_spawn", "&6Nie ustawiono spawn'a!"));
+                    return false;
+                }
                 if (sender.getName().equals(args[0])) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("general.cannot_check_self", "&6Nie możesz sprawdzić samego siebie!"));
                     return false;
                 }
                 Player player = Bukkit.getPlayerExact(args[0]);
+                Location location = new Location(Bukkit.getWorld(checkspawn.getString("world-name")), checkspawn.getDouble("x"),checkspawn.getDouble("y"), checkspawn.getDouble("z"), (float) checkspawn.getDouble("yaw"), (float) checkspawn.getDouble("pitch"));
+                player.teleport(location);
 
                 // sender
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("commands.sprawdz.senderMessage", "&6Sprawdzasz {player}").replace("{player}", player.getName()));
@@ -53,9 +61,7 @@ public class PlayerCheckCommand implements CommandExecutor, TabCompleter {
                 main.checkedList.put(player.getUniqueId(), new Checked(player.getLocation(), taskID, ((Player) sender).getUniqueId()));
                 main.adminsChecked.put(((Player) sender).getUniqueId(), player.getUniqueId());
 
-                YamlConfiguration checkspawn = YamlConfiguration.loadConfiguration(new File(main.getDataFolder(), "checkspawn.yml"));
-                player.teleport(new Location(Bukkit.getWorld(checkspawn.getString("world-name")), checkspawn.getDouble("x"),checkspawn.getDouble("y"), checkspawn.getDouble("z"), (float) checkspawn.getDouble("yaw"), (float) checkspawn.getDouble("pitch")));
-                return true;
+
             } else {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("commands.sprawdz.usage", "&6Złe użycie komendy! /playercheck <gracz>") );
             }

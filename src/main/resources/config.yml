@@ -3,3 +3,8 @@ prefix: "&7[&bPenChecker&7]"
 # variables: {player}
 cheaterCmd: "ban {player} cheaty"
 logoutCmd: "ban {player} Wychodzenie podczas sprawdzania"
+
+flags:
+  enabled: true
+  # flags: build, move, cmd, interact, chat, enderpearl, drop
+  flags: ["build", "move", "cmd", "interact", "chat", "enderpearl", "drop", "pickup"]
