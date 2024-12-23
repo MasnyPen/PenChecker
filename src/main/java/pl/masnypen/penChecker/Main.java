@@ -4,10 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
-import pl.masnypen.penChecker.commands.CheaterCommand;
-import pl.masnypen.penChecker.commands.ClearCommand;
-import pl.masnypen.penChecker.commands.PlayerCheckCommand;
-import pl.masnypen.penChecker.commands.SetCheckLocationCommand;
+import pl.masnypen.penChecker.commands.*;
 import pl.masnypen.penChecker.events.CheckedLogout;
 import pl.masnypen.penChecker.events.isCheckerEvent;
 import pl.masnypen.penChecker.manager.LangManager;
@@ -25,17 +22,11 @@ public final class Main extends JavaPlugin {
         this.getConfig().options().copyDefaults();
         this.saveDefaultConfig();
 
-        this.langManager = new LangManager(getDataFolder());
-
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Zostal wlaczony!");
-        Bukkit.getConsoleSender().sendMessage("");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "----------------");
-        Bukkit.getConsoleSender().sendMessage("");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "  PenChecker!");
-        Bukkit.getConsoleSender().sendMessage("");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "  Wersja 1.0");
-        Bukkit.getConsoleSender().sendMessage("");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "----------------");
+        this.langManager = new LangManager(getDataFolder(), this);
+        
+        getLogger().info("Zostal wlaczony!");
+        getLogger().info("  PenChecker!");
+        getLogger().info("  Wersja 1.0");
 
         registerCommands();
         registerEvents();
@@ -54,6 +45,9 @@ public final class Main extends JavaPlugin {
         getCommand("sprawdz").setTabCompleter(playerCheckCommand);
         getCommand("czysty").setExecutor(new ClearCommand(this));
         getCommand("skazany").setExecutor(new CheaterCommand(this));
+        PenCheckerCommand penCheckerCommand = new PenCheckerCommand(this);
+        getCommand("penchecker").setExecutor(penCheckerCommand);
+        getCommand("penchecker").setTabCompleter(penCheckerCommand);
     }
     public void registerEvents() {
         Bukkit.getPluginManager().registerEvents(new isCheckerEvent(this), this);
@@ -63,7 +57,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void reloadConfig() {
 
-        this.langManager = new LangManager(getDataFolder());
+        this.langManager = new LangManager(getDataFolder(), this);
 
         super.reloadConfig();
     }

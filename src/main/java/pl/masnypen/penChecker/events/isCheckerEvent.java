@@ -49,10 +49,21 @@ public class isCheckerEvent implements Listener {
     }
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent event) {
-        if (main.checkedList.get(event.getPlayer().getUniqueId()) != null && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("enderpearl")) {
+        if (event.getCause() == PlayerTeleportEvent.TeleportCause.ENDER_PEARL) {
+            if (main.checkedList.get(event.getPlayer().getUniqueId()) != null
+                    && main.getConfig().getBoolean("flags.enabled")
+                    && main.getConfig().getStringList("flags.flags").contains("enderpearl")) {
+                event.setCancelled(true);
+            }
+        }
+    }
+    @EventHandler
+    public void onPlayerMove(PlayerMoveEvent event) {
+        if (main.checkedList.get(event.getPlayer().getUniqueId()) != null && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("move")) {
             event.setCancelled(true);
         }
     }
+
     @EventHandler
     public void onPlayerDropItem(PlayerDropItemEvent event) {
         if (main.checkedList.get(event.getPlayer().getUniqueId()) != null && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("drop")) {

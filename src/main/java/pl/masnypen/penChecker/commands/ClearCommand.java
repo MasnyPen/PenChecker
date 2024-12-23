@@ -10,6 +10,7 @@ import pl.masnypen.penChecker.Main;
 import pl.masnypen.penChecker.utils.Checked;
 
 import java.util.UUID;
+import java.util.logging.Level;
 
 public class ClearCommand implements CommandExecutor {
     private Main main;
@@ -24,8 +25,9 @@ public class ClearCommand implements CommandExecutor {
             Checked checked = main.checkedList.get(targetId);
             Player target = Bukkit.getPlayer(targetId);
 
-            Bukkit.getScheduler().cancelTask(checked.taskID);
             target.teleport(checked.location);
+
+            Bukkit.getScheduler().cancelTask(checked.taskID);
 
             target.sendMessage(main.langManager.getMessage("commands.czysty.target.message", "&7Oczyszczono cie z zarzutów!"));
             target.sendTitle(main.langManager.getMessage("commands.czysty.target.title", "&6Jesteś czysty!"), main.langManager.getMessage("commands.czysty.target.subtitle", "&7Oczyszczono cie z zarzutów!"));
@@ -40,6 +42,7 @@ public class ClearCommand implements CommandExecutor {
 
             main.checkedList.remove(targetId);
             main.adminsChecked.remove(((Player) sender).getUniqueId());
+            return true;
             } else {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("general.no_target_player", "&6Nie sprawdzasz żadnego gracza!") );
             }

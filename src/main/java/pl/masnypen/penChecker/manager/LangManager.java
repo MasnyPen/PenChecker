@@ -3,17 +3,20 @@ package pl.masnypen.penChecker.manager;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import pl.masnypen.penChecker.Main;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
 
 public class LangManager {
     private FileConfiguration languageConfig;
+    private Main main;
 
-    public LangManager(File pluginFolder) {
-
+    public LangManager(File pluginFolder, Main main) {
+        this.main = main;
         File languageFile = new File(pluginFolder, "messages.yml");
         if (!languageFile.exists()) {
             saveDefaultResource(languageFile, "messages.yml");
@@ -42,7 +45,7 @@ public class LangManager {
              FileOutputStream out = new FileOutputStream(targetFile)) {
 
             if (in == null) {
-                System.err.println("Resource " + resourceName + " not found in the plugin JAR.");
+                main.getLogger().log(Level.SEVERE,"Resource " + resourceName + " not found in the plugin JAR.");
                 return;
             }
 
@@ -51,7 +54,7 @@ public class LangManager {
             while ((bytesRead = in.read(buffer)) > 0) {
                 out.write(buffer, 0, bytesRead);
             }
-            System.out.println("Copied default language file: " + resourceName);
+            main.getLogger().log(Level.SEVERE,"Copied default language file: " + resourceName);
         } catch (IOException e) {
             e.printStackTrace();
         }

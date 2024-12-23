@@ -24,7 +24,7 @@ public class PenCheckerCommand implements CommandExecutor, TabCompleter {
         } else
             switch (args[0].toLowerCase()) {
                 case "reload":
-                    if (sender.hasPermission("pencore.reload")) {
+                    if (sender.hasPermission("pencore.admin") || sender.isOp()) {
                         reloadPlugin(sender);
                     } else {
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("general.no_permission", "&6Nie masz uprawnień do wykonania tej komendy."));

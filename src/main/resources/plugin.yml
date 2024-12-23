@@ -8,27 +8,27 @@ description: Plugin na sprawdzanie graczy.
 commands:
   ustawsprawdzania:
     description: Ustaw lokację, gdzie gracze będą sprawdzani.
-    usage: /ustawspawnsprawdzania
     permission: penchecker.admin
     permission-message: "&cNie masz uprawnień do ustawienia lokacji sprawdzania!"
 
   sprawdz:
     description: Rozpocznij sprawdzanie danego gracza.
-    usage: /sprawdz <gracz>
     permission: penchecker.use
     permission-message: "&cNie masz uprawnień do sprawdzania graczy!"
 
   czysty:
     description: Oznacz sprawdzanego gracza jako czystego.
-    usage: /czysty <gracz>
     permission: penchecker.use
     permission-message: "&cNie masz uprawnień, aby oznaczyć gracza jako czystego!"
 
   skazany:
     description: Oznacz gracza jako winnego (cheatera).
-    usage: /skazany <gracz>
     permission: penchecker.use
     permission-message: "&cNie masz uprawnień, aby oznaczyć gracza jako skazanego!"
+  penchecker:
+    description: Ogolna komenda pencheckera.
+    permission-message: "&cNie masz uprawnień, aby oznaczyć gracza jako skazanego!"
+
 
 permissions:
   penchecker.admin:
