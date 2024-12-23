@@ -19,19 +19,27 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        if (!getDataFolder().exists()) {
+            if (getDataFolder().mkdirs()) {
+                getLogger().info("Plugin folder created!");
+            } else {
+                getLogger().severe("Failed to create the plugin folder!");
+                return;
+            }
+        }
         this.getConfig().options().copyDefaults();
         this.saveDefaultConfig();
 
         this.langManager = new LangManager(getDataFolder(), this);
 
-        getLogger().info("Zostal wlaczony!");
+        getLogger().info("Plugin has been enabled!");
         getLogger().info("PenChecker!");
-        getLogger().info("Wersja 1.0");
+        getLogger().info("Version 1.0");
 
         registerCommands();
         registerEvents();
-
     }
+
 
     @Override
     public void onDisable() {

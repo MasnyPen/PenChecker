@@ -54,7 +54,7 @@ public class LangManager {
             while ((bytesRead = in.read(buffer)) > 0) {
                 out.write(buffer, 0, bytesRead);
             }
-            main.getLogger().log(Level.SEVERE,"Copied default language file: " + resourceName);
+            main.getLogger().info("Copied default language file: " + resourceName);
         } catch (IOException e) {
             e.printStackTrace();
         }
