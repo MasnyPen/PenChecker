@@ -21,7 +21,7 @@ jobs:
         with:
           java-version: '22'
           java-package: 'jdk'
-          distribution: 'openjdk'
+          distribution: 'zulu'
           check-latest: false
 
       - name: Build with Maven
