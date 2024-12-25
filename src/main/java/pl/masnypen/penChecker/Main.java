@@ -34,7 +34,7 @@ public final class Main extends JavaPlugin {
 
         getLogger().info("Plugin has been enabled!");
         getLogger().info("PenChecker!");
-        getLogger().info("Version 1.0");
+        getLogger().info("Version " + getDescription().getVersion());
 
         registerCommands();
         registerEvents();
