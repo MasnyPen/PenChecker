@@ -1,4 +1,4 @@
-_# PenChecker
+# PenChecker
 
 PenChecker is a plugin for Minecraft servers that allows administrators to monitor and check players for cheating or suspicious behavior. Players can be "checked" by an admin, and if any wrongdoing is detected, they can be punished using the appropriate commands.
 
