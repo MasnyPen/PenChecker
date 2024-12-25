@@ -6,35 +6,36 @@ author: MasnyPen
 description: Plugin na sprawdzanie graczy.
 
 commands:
-  ustawsprawdzania:
-    description: Ustaw lokację, gdzie gracze będą sprawdzani.
+  setchecklocation:
+    description: Set the location where players will be checked.
     permission: penchecker.admin
-    permission-message: "&cNie masz uprawnień do ustawienia lokacji sprawdzania!"
+    permission-message: "&cYou do not have permission to set the checking location!"
 
-  sprawdz:
-    description: Rozpocznij sprawdzanie danego gracza.
+  startcheck:
+    description: Start checking a specific player.
     permission: penchecker.use
-    permission-message: "&cNie masz uprawnień do sprawdzania graczy!"
+    permission-message: "&cYou do not have permission to start checking players!"
 
-  czysty:
-    description: Oznacz sprawdzanego gracza jako czystego.
+  markclean:
+    description: Mark the checked player as clean.
     permission: penchecker.use
-    permission-message: "&cNie masz uprawnień, aby oznaczyć gracza jako czystego!"
+    permission-message: "&cYou do not have permission to mark players as clean!"
 
-  skazany:
-    description: Oznacz gracza jako winnego (cheatera).
+  markguilty:
+    description: Mark the player as guilty (cheater).
     permission: penchecker.use
-    permission-message: "&cNie masz uprawnień, aby oznaczyć gracza jako skazanego!"
+    permission-message: "&cYou do not have permission to mark players as guilty!"
+
   penchecker:
-    description: Ogolna komenda pencheckera.
-    permission-message: "&cNie masz uprawnień, aby oznaczyć gracza jako skazanego!"
+    description: General PenChecker command.
+    permission-message: "&cYou do not have permission to use this command!"
 
 
 permissions:
   penchecker.admin:
-    description: Uprawnienia administracyjne do zarządzania spawnem i konfiguracją.
+    description: Administrative permissions for managing the checking location and configuration.
     default: op
 
   penchecker.use:
-    description: Uprawnienia do wykonywania podstawowych komend sprawdzania.
+    description: Permissions to execute basic checking commands.
     default: op

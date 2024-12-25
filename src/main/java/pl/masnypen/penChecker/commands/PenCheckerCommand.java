@@ -12,6 +12,7 @@ import java.util.List;
 public class PenCheckerCommand implements CommandExecutor, TabCompleter {
 
     Main main;
+
     public PenCheckerCommand(Main main) {
         this.main = main;
     }
@@ -27,7 +28,7 @@ public class PenCheckerCommand implements CommandExecutor, TabCompleter {
                     if (sender.hasPermission("pencore.admin") || sender.isOp()) {
                         reloadPlugin(sender);
                     } else {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("general.no_permission", "&6Nie masz uprawnień do wykonania tej komendy."));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + ChatColor.GOLD +" You do not have permission to execute this command.");
                     }
                     return true;
                 case "help":
@@ -41,20 +42,25 @@ public class PenCheckerCommand implements CommandExecutor, TabCompleter {
                     return false;
             }
     }
+
     private void reloadPlugin(CommandSender sender) {
         main.reloadConfig();
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("general.reload", "&&6Konfiguracja została przeładowana."));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("general.reload", "&6The configuration has been reloaded."));
     }
-
 
     private void showHelp(CommandSender sender) {
-        sender.sendMessage(ChatColor.GOLD + "Dostępne komendy:");
-        sender.sendMessage(ChatColor.GOLD + "/penchecker reload - Przeładuj plugin");
-        sender.sendMessage(ChatColor.GOLD + "/penchecker help - Wyświetl pomoc");
-        sender.sendMessage(ChatColor.GOLD + "/penchecker version - Wyświetl wersję pluginu");
+        sender.sendMessage(ChatColor.GOLD + "Available commands:");
+        sender.sendMessage(ChatColor.GOLD + "/penchecker reload - Reload the plugin");
+        sender.sendMessage(ChatColor.GOLD + "/penchecker help - Display help");
+        sender.sendMessage(ChatColor.GOLD + "/penchecker version - Display the plugin version");
+        sender.sendMessage(ChatColor.GOLD + "/penchecker setchecklocation - Set the location where players will be checked");
+        sender.sendMessage(ChatColor.GOLD + "/penchecker startcheck <player> - Start checking a specific player");
+        sender.sendMessage(ChatColor.GOLD + "/penchecker markclean <player> - Mark the player as clean");
+        sender.sendMessage(ChatColor.GOLD + "/penchecker markguilty <player> - Mark the player as guilty (cheater)");
     }
+
     private void showVersion(CommandSender sender) {
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + ChatColor.GOLD + "Plugin PenCore w wersji" + " " + ChatColor.RED + main.getDescription().getVersion());
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + ChatColor.GOLD + "Plugin PenCore version" + " " + ChatColor.RED + main.getDescription().getVersion());
     }
 
     @Override
