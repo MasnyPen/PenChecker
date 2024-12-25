@@ -8,7 +8,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import pl.masnypen.penChecker.Main;
 import pl.masnypen.penChecker.utils.Checked;
 
-
 public class CheckedLogout implements Listener {
     private Main main;
 
@@ -34,11 +33,11 @@ public class CheckedLogout implements Listener {
                 sender.teleport(checked.locationSender);
             }
 
-            sender.sendMessage(main.langManager.getMessage("commands.logout.sender", "&b{player}&6 wyszedł z serwera oraz został ukarany!").replace("{player}", target.getName()));
+            sender.sendMessage(main.langManager.getMessage("commands.logout.sender", "&b{player}&6 has left the server and has been punished!").replace("{player}", target.getName()));
 
             Bukkit.broadcastMessage("");
             Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage(main.langManager.getMessage("commands.logout.broadcast", "&b{player}&6 wyszedł podczas sprawdzania!").replace("{player}", target.getName()));
+            Bukkit.broadcastMessage(main.langManager.getMessage("commands.logout.broadcast", "&b{player}&6 left during the check!").replace("{player}", target.getName()));
             Bukkit.broadcastMessage("");
             Bukkit.broadcastMessage("");
 

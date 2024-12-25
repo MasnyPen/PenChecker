@@ -30,7 +30,7 @@ public class SetCheckLocationCommand implements CommandExecutor {
                     file.createNewFile();
                 } catch (IOException e) {
                     System.out.println("Can't load file! Error.");
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("commands.spawn.error","&eWystąpił błąd przy zapisywaniu" ));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("commands.spawn.error","&eAn error occurred while saving" ));
                     return false;
                 }
             }
@@ -48,18 +48,15 @@ public class SetCheckLocationCommand implements CommandExecutor {
                 modifyFile.save(file);
             } catch (IOException e) {
                 System.out.println("Can't save file! Error.");
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("commands.spawn.error","&eWystąpił błąd przy zapisywaniu" ));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("commands.spawn.error","&eAn error occurred while saving" ));
                 return false;
             }
 
-
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("commands.spawn.set", "&6Ustawiono spawn sprawdzania!"));
-
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("commands.spawn.set", "&6Check spawn has been set!"));
 
         } else {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("general.command_not_from_console", " Nie możesz wykonać tej komendy z konsoli."));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("general.command_not_from_console", "&eYou cannot execute this command from the console."));
         }
-
 
         return false;
     }
