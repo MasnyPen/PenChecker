@@ -47,12 +47,12 @@ public final class Main extends JavaPlugin {
     }
 
     public void registerCommands() {
-        getCommand("ustawsprawdzania").setExecutor(new SetCheckLocationCommand(this));
+        getCommand("setchecklocation").setExecutor(new SetCheckLocationCommand(this));
         PlayerCheckCommand playerCheckCommand = new PlayerCheckCommand(this);
-        getCommand("sprawdz").setExecutor(playerCheckCommand);
-        getCommand("sprawdz").setTabCompleter(playerCheckCommand);
-        getCommand("czysty").setExecutor(new ClearCommand(this));
-        getCommand("skazany").setExecutor(new CheaterCommand(this));
+        getCommand("startcheck").setExecutor(playerCheckCommand);
+        getCommand("startcheck").setTabCompleter(playerCheckCommand);
+        getCommand("markclean").setExecutor(new ClearCommand(this));
+        getCommand("markguilty").setExecutor(new CheaterCommand(this));
         PenCheckerCommand penCheckerCommand = new PenCheckerCommand(this);
         getCommand("penchecker").setExecutor(penCheckerCommand);
         getCommand("penchecker").setTabCompleter(penCheckerCommand);
