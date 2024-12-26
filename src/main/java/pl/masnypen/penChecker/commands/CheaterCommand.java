@@ -32,11 +32,11 @@ public class CheaterCommand implements CommandExecutor {
                     ((Player) sender).teleport(checked.locationSender);
                 }
 
-                sender.sendMessage(main.langManager.getMessage("commands.skazany.sender", "&6Successfully convicted &b{player}&6!").replace("{player}", target.getName()));
+                sender.sendMessage(main.getLangManager().getMessage("commands.skazany.sender", "&6Successfully convicted &b{player}&6!").replace("{player}", target.getName()));
 
                 Bukkit.broadcastMessage("");
                 Bukkit.broadcastMessage("");
-                Bukkit.broadcastMessage(main.langManager.getMessage("commands.skazany.broadcast", "&b{player}&6 has been convicted!").replace("{player}", target.getName()));
+                Bukkit.broadcastMessage(main.getLangManager().getMessage("commands.skazany.broadcast", "&b{player}&6 has been convicted!").replace("{player}", target.getName()));
                 Bukkit.broadcastMessage("");
                 Bukkit.broadcastMessage("");
                 main.checkedList.remove(targetId);
@@ -45,10 +45,10 @@ public class CheaterCommand implements CommandExecutor {
                 Bukkit.dispatchCommand(sender, main.getConfig().getString("cheaterCmd").replace("{player}", target.getName()));
                 return true;
             } else {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("skazany.no_target_player", "&6You are not checking any player!"));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.getLangManager().getMessage("skazany.no_target_player", "&6You are not checking any player!"));
             }
         } else {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("general.command_not_from_console", "You cannot execute this command from the console."));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.getLangManager().getMessage("general.command_not_from_console", "You cannot execute this command from the console."));
         }
 
         return false;

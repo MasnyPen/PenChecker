@@ -30,29 +30,29 @@ public class PlayerCheckCommand implements CommandExecutor, TabCompleter {
                 YamlConfiguration checkspawn = YamlConfiguration.loadConfiguration(new File(main.getDataFolder(), "checkspawn.yml"));
 
                 if (!checkspawn.contains("world-name") || !checkspawn.contains("world") || !checkspawn.contains("x") || !checkspawn.contains("y") || !checkspawn.contains("z") || !checkspawn.contains("yaw") || !checkspawn.contains("pitch")) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("general.no_spawn", "&6The spawn point has not been set!"));
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.getLangManager().getMessage("general.no_spawn", "&6The spawn point has not been set!"));
                     return false;
                 }
                 if (sender.getName().equals(args[0])) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("general.cannot_check_self", "&6You cannot check yourself!"));
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.getLangManager().getMessage("general.cannot_check_self", "&6You cannot check yourself!"));
                     return false;
                 }
                 Player player = Bukkit.getPlayerExact(args[0]);
 
                 // sender
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("commands.sprawdz.senderMessage", "&6You are checking {player}").replace("{player}", player.getName()));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.getLangManager().getMessage("commands.sprawdz.senderMessage", "&6You are checking {player}").replace("{player}", player.getName()));
 
                 // broadcast
                 Bukkit.broadcastMessage("");
                 Bukkit.broadcastMessage("");
 
-                Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("commands.sprawdz.broadcastMessage", "&6{player} is being &cCHECKED &6by {sender}").replace("{player}", player.getName()).replace("{sender}", sender.getName()));
+                Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.getLangManager().getMessage("commands.sprawdz.broadcastMessage", "&6{player} is being &cCHECKED &6by {sender}").replace("{player}", player.getName()).replace("{sender}", sender.getName()));
                 Bukkit.broadcastMessage("");
                 Bukkit.broadcastMessage("");
 
                 int taskID = Bukkit.getScheduler().runTaskTimer(main, () -> {
-                    player.sendMessage(main.langManager.getMessage("commands.sprawdz.target.message", "&6You are being checked by {sender}").replace("{sender}", sender.getName()));
-                    player.sendTitle(main.langManager.getMessage("commands.sprawdz.target.title", "&4YOU ARE BEING CHECKED"), main.langManager.getMessage("commands.sprawdz.target.subtitle", "&7Join the Discord voice channel you're-being-checked"), 20, 130, 20);
+                    player.sendMessage(main.getLangManager().getMessage("commands.sprawdz.target.message", "&6You are being checked by {sender}").replace("{sender}", sender.getName()));
+                    player.sendTitle(main.getLangManager().getMessage("commands.sprawdz.target.title", "&4YOU ARE BEING CHECKED"), main.getLangManager().getMessage("commands.sprawdz.target.subtitle", "&7Join the Discord voice channel you're-being-checked"), 20, 130, 20);
                 }, 0L, 200L).getTaskId();
 
 
@@ -66,10 +66,10 @@ public class PlayerCheckCommand implements CommandExecutor, TabCompleter {
 
                 return true;
             } else {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("commands.sprawdz.usage", "&6Incorrect command usage! /playercheck <player>") );
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.getLangManager().getMessage("commands.sprawdz.usage", "&6Incorrect command usage! /playercheck <player>") );
             }
         } else {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.langManager.getMessage("general.command_not_from_console", "&6You cannot execute this command from the console."));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.getLangManager().getMessage("general.command_not_from_console", "&6You cannot execute this command from the console."));
         }
         return false;
     }

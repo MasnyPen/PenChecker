@@ -45,7 +45,7 @@ public class PenCheckerCommand implements CommandExecutor, TabCompleter {
 
     private void reloadPlugin(CommandSender sender) {
         main.reloadConfig();
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.langManager.getMessage("general.reload", "&6The configuration has been reloaded."));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.getLangManager().getMessage("general.reload", "&6The configuration has been reloaded."));
     }
 
     private void showHelp(CommandSender sender) {

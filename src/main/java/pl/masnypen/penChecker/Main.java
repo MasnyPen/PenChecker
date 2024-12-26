@@ -15,7 +15,7 @@ import java.util.UUID;
 
 
 public final class Main extends JavaPlugin {
-    public LangManager langManager;
+    private LangManager langManager;
 
     @Override
     public void onEnable() {
@@ -73,4 +73,8 @@ public final class Main extends JavaPlugin {
 
     public HashMap<UUID, Checked> checkedList = new HashMap<>();
     public HashMap<UUID, UUID> adminsChecked = new HashMap<>();
+
+    public LangManager getLangManager() {
+        return langManager;
+    }
 }

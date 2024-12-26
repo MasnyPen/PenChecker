@@ -19,7 +19,7 @@ public class isCheckerEvent implements Listener {
     public void onPlayerCommand(PlayerCommandPreprocessEvent event) {
         if (main.checkedList.get(event.getPlayer().getUniqueId()) != null && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("cmd")) {
             event.setCancelled(true);
-            event.getPlayer().sendMessage(main.langManager.getMessage("events.command_use", "&6Nie możesz używać komend podczas sprawdzania!"));
+            event.getPlayer().sendMessage(main.getLangManager().getMessage("events.command_use", "&6Nie możesz używać komend podczas sprawdzania!"));
         }
     }
     @EventHandler
