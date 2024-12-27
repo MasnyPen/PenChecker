@@ -1,7 +1,7 @@
 name: PenChecker
-version: '1.0-SNAPSHOT'
+version: '1.0'
 main: pl.masnypen.penChecker.Main
-api-version: '1.20'
+api-version: '1.13'
 author: MasnyPen
 description: Plugin na sprawdzanie graczy.
 
@@ -9,26 +9,26 @@ commands:
   setchecklocation:
     description: Set the location where players will be checked.
     permission: penchecker.admin
-    permission-message: "&cYou do not have permission to set the checking location!"
+    permission-message: "You do not have permission to use this command!"
 
   startcheck:
     description: Start checking a specific player.
     permission: penchecker.use
-    permission-message: "&cYou do not have permission to start checking players!"
+    permission-message: "You do not have permission to use this command!"
 
   markclean:
     description: Mark the checked player as clean.
     permission: penchecker.use
-    permission-message: "&cYou do not have permission to mark players as clean!"
+    permission-message: "You do not have permission to use this command!"
 
   markguilty:
     description: Mark the player as guilty (cheater).
     permission: penchecker.use
-    permission-message: "&cYou do not have permission to mark players as guilty!"
+    permission-message: "You do not have permission to use this command!"
 
   penchecker:
     description: General PenChecker command.
-    permission-message: "&cYou do not have permission to use this command!"
+    permission-message: "You do not have permission to use this command!"
 
 
 permissions:
