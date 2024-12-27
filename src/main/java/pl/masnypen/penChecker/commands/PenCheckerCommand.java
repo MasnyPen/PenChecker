@@ -53,10 +53,10 @@ public class PenCheckerCommand implements CommandExecutor, TabCompleter {
         sender.sendMessage(ChatColor.GOLD + "/penchecker reload - Reload the plugin");
         sender.sendMessage(ChatColor.GOLD + "/penchecker help - Display help");
         sender.sendMessage(ChatColor.GOLD + "/penchecker version - Display the plugin version");
-        sender.sendMessage(ChatColor.GOLD + "/penchecker setchecklocation - Set the location where players will be checked");
-        sender.sendMessage(ChatColor.GOLD + "/penchecker startcheck <player> - Start checking a specific player");
-        sender.sendMessage(ChatColor.GOLD + "/penchecker markclean <player> - Mark the player as clean");
-        sender.sendMessage(ChatColor.GOLD + "/penchecker markguilty <player> - Mark the player as guilty (cheater)");
+        sender.sendMessage(ChatColor.GOLD + "/setchecklocation - Set the location where players will be checked");
+        sender.sendMessage(ChatColor.GOLD + "/startcheck <player> - Start checking a specific player");
+        sender.sendMessage(ChatColor.GOLD + "/markclean <player> - Mark the player as clean");
+        sender.sendMessage(ChatColor.GOLD + "/markguilty <player> - Mark the player as guilty (cheater)");
     }
 
     private void showVersion(CommandSender sender) {
