@@ -54,16 +54,18 @@ public class PlayerCheckCommand implements CommandExecutor, TabCompleter {
                     Bukkit.broadcastMessage("");
 
                     int taskID = Bukkit.getScheduler().runTaskTimer(main, () -> {
-                        player.sendMessage(main.getLangManager().getMessage("commands.sprawdz.target.message", "&6You are being checked by {sender}").replace("{sender}", sender.getName()));
-                        player.sendTitle(main.getLangManager().getMessage("commands.sprawdz.target.title", "&4YOU ARE BEING CHECKED"), main.getLangManager().getMessage("commands.startcheck.target.subtitle", "&7Join the Discord voice channel you're-being-checked"), 20, 130, 20);
+                        player.sendMessage(main.getLangManager().getMessage("commands.startcheck.target.message", "&6You are being checked by {sender}").replace("{sender}", sender.getName()));
+                        player.sendTitle(main.getLangManager().getMessage("commands.startcheck.target.title", "&4YOU ARE BEING CHECKED"), main.getLangManager().getMessage("commands.startcheck.target.subtitle", "&7Join the Discord voice channel you're-being-checked"), 20, 130, 20);
                     }, 0L, 200L).getTaskId();
 
 
 
                     main.getCheckManager().put(player.getUniqueId(), player.getLocation(), taskID, ((Player) sender).getUniqueId(), ((Player) sender).getLocation());
-                    player.teleport(spawn);
-                    if (main.getConfig().getBoolean("admin_tp")) {
-                        ((Player) sender).teleport(spawn);
+                    if (main.getConfig().getBoolean("useCheckLocation")) {
+                        player.teleport(spawn);
+                        if (main.getConfig().getBoolean("admin_tp")) {
+                            ((Player) sender).teleport(spawn);
+                        }
                     }
 
                     return true;

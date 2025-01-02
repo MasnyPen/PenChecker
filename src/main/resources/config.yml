@@ -1,5 +1,9 @@
 prefix: "&7[&bPenChecker&7]"
 
+useCheckLocation: false
+# if useCheckLocation is true
+admin_tp: true
+
 # variables: {player}
 cheaterCmd: "ban {player} cheaty"
 logoutCmd: "ban {player} Wychodzenie podczas sprawdzania"
@@ -9,4 +13,3 @@ flags:
   # flags: build, move, cmd, interact, chat, enderpearl, drop
   flags: ["build", "cmd", "interact", "chat", "enderpearl", "drop", "pickup"]
 
-admin_tp: true

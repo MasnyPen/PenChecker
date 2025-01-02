@@ -28,16 +28,18 @@ public class CheckedLogout implements Listener {
             }
 
             Bukkit.getScheduler().cancelTask(checked.getTaskID());
-            target.teleport(checked.getLocation());
-            if (main.getConfig().getBoolean("admin_tp")) {
-                sender.teleport(checked.getLocationSender());
+            if (main.getConfig().getBoolean("useCheckLocation")) {
+                target.teleport(checked.getLocation());
+                if (main.getConfig().getBoolean("admin_tp")) {
+                    sender.teleport(checked.getLocationSender());
+                }
             }
 
-            sender.sendMessage(main.getLangManager().getMessage("commands.logout.sender", "&b{player}&6 has left the server and has been punished!").replace("{player}", target.getName()));
+            sender.sendMessage(main.getLangManager().getMessage("events.logout.sender", "&b{player}&6 has left the server and has been punished!").replace("{player}", target.getName()));
 
             Bukkit.broadcastMessage("");
             Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage(main.getLangManager().getMessage("commands.logout.broadcast", "&b{player}&6 left during the check!").replace("{player}", target.getName()));
+            Bukkit.broadcastMessage(main.getLangManager().getMessage("events.logout.broadcast", "&b{player}&6 left during the check!").replace("{player}", target.getName()));
             Bukkit.broadcastMessage("");
             Bukkit.broadcastMessage("");
 

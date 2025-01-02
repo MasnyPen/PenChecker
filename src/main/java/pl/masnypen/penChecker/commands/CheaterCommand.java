@@ -27,9 +27,11 @@ public class CheaterCommand implements CommandExecutor {
                 Player target = Bukkit.getPlayer(targetId);
 
                 Bukkit.getScheduler().cancelTask(checked.getTaskID());
-                target.teleport(checked.getLocationSender());
-                if (main.getConfig().getBoolean("admin_tp")) {
-                    ((Player) sender).teleport(checked.getLocationSender());
+                if (main.getConfig().getBoolean("useCheckLocation")) {
+                    target.teleport(checked.getLocation());
+                    if (main.getConfig().getBoolean("admin_tp")) {
+                        ((Player) sender).teleport(checked.getLocationSender());
+                    }
                 }
 
                 sender.sendMessage(main.getLangManager().getMessage("commands.markguilty.sender", "&6Successfully convicted &b{player}&6!").replace("{player}", target.getName()));

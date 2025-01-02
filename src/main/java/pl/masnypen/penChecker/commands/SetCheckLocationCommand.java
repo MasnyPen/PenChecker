@@ -22,7 +22,12 @@ public class SetCheckLocationCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] strings) {
 
         if (sender instanceof Player) {
+
             Player player = (Player) sender;
+            if (!main.getConfig().getBoolean("useCheckLocation")) {
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + this.main.getLangManager().getMessage("commands.spawn.cannot_set","&eYou can't set spawn." ));
+                return false;
+            }
 
             File file = new File(main.getDataFolder(), "checkspawn.yml");
             if (!file.exists()) {

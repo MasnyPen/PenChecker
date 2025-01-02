@@ -24,6 +24,9 @@ commands:
     # Wiadomość wyświetlana, gdy punkt spawnu dla sprawdzania został ustawiony.
     set: "&6Ustawiono spawn sprawdzania!"
 
+    # Komunikat pojawia się, gdy funkcja useCheckLocation jest wyłączona.
+    cannot_set: "&eNie możesz ustawić spawnu."
+
     # Wiadomość wyświetlana w przypadku błędu podczas zapisywania spawnu.
     error: "&eWystąpił błąd przy zapisywaniu"
 

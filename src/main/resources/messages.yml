@@ -24,6 +24,9 @@ commands:
     # Message displayed when the spawn point for checking has been set.
     set: "&6The checking spawn point has been set!"
 
+    # The message appears when useCheckLocation is disabled.
+    cannot_set: "&eYou can't set spawn."
+
     # Message displayed in case of an error when saving the spawn.
     error: "&eAn error occurred while saving the spawn."
 
