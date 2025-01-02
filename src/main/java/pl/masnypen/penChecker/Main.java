@@ -8,15 +8,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 import pl.masnypen.penChecker.commands.*;
 import pl.masnypen.penChecker.events.CheckedLogout;
 import pl.masnypen.penChecker.events.isCheckerEvent;
+import pl.masnypen.penChecker.manager.CheckManager;
 import pl.masnypen.penChecker.manager.LangManager;
-import pl.masnypen.penChecker.utils.Checked;
-
-import java.util.HashMap;
-import java.util.UUID;
 
 
 public final class Main extends JavaPlugin {
     private LangManager langManager;
+    private CheckManager checkManager;
 
     @Override
     public void onEnable() {
@@ -32,6 +30,7 @@ public final class Main extends JavaPlugin {
         this.saveDefaultConfig();
 
         this.langManager = new LangManager(getDataFolder(), this);
+        this.checkManager = new CheckManager();
         Metrics metrics = new Metrics(this, 24330);
 
         getLogger().info("Plugin has been enabled!");
@@ -73,10 +72,13 @@ public final class Main extends JavaPlugin {
     }
 
 
-    public HashMap<UUID, Checked> checkedList = new HashMap<>();
-    public HashMap<UUID, UUID> adminsChecked = new HashMap<>();
+
 
     public LangManager getLangManager() {
         return langManager;
+    }
+
+    public CheckManager getCheckManager() {
+        return checkManager;
     }
 }

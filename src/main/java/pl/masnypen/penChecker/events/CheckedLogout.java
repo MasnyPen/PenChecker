@@ -17,20 +17,20 @@ public class CheckedLogout implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-        Checked checked = main.checkedList.get(event.getPlayer().getUniqueId());
+        Checked checked = main.getCheckManager().get(event.getPlayer().getUniqueId());
         if (checked != null) {
             Player target = event.getPlayer();
-            Player sender = Bukkit.getPlayer(checked.sender);
+            Player sender = Bukkit.getPlayer(checked.getSender());
 
             if (sender == null) {
                 System.out.println("Can't find a sender");
                 return;
             }
 
-            Bukkit.getScheduler().cancelTask(checked.taskID);
-            target.teleport(checked.location);
+            Bukkit.getScheduler().cancelTask(checked.getTaskID());
+            target.teleport(checked.getLocation());
             if (main.getConfig().getBoolean("admin_tp")) {
-                sender.teleport(checked.locationSender);
+                sender.teleport(checked.getLocationSender());
             }
 
             sender.sendMessage(main.getLangManager().getMessage("commands.logout.sender", "&b{player}&6 has left the server and has been punished!").replace("{player}", target.getName()));
@@ -43,8 +43,7 @@ public class CheckedLogout implements Listener {
 
             Bukkit.dispatchCommand(sender, main.getConfig().getString("logoutCmd").replace("{player}", target.getName()));
 
-            main.checkedList.remove(target.getUniqueId());
-            main.adminsChecked.remove(sender.getUniqueId());
+            main.getCheckManager().remove(target.getUniqueId());
         }
     }
 }

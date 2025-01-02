@@ -21,15 +21,15 @@ public class CheaterCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
 
         if (sender instanceof Player) {
-            if (main.adminsChecked.get(((Player) sender).getUniqueId()) != null) {
-                UUID targetId = main.adminsChecked.get(((Player) sender).getUniqueId());
-                Checked checked = main.checkedList.get(targetId);
+            if (main.getCheckManager().isAdminChecking(((Player) sender).getUniqueId())) {
+                UUID targetId = main.getCheckManager().getCheckedByAdmin(((Player) sender).getUniqueId());
+                Checked checked = main.getCheckManager().get(targetId);
                 Player target = Bukkit.getPlayer(targetId);
 
-                Bukkit.getScheduler().cancelTask(checked.taskID);
-                target.teleport(checked.location);
+                Bukkit.getScheduler().cancelTask(checked.getTaskID());
+                target.teleport(checked.getLocationSender());
                 if (main.getConfig().getBoolean("admin_tp")) {
-                    ((Player) sender).teleport(checked.locationSender);
+                    ((Player) sender).teleport(checked.getLocationSender());
                 }
 
                 sender.sendMessage(main.getLangManager().getMessage("commands.skazany.sender", "&6Successfully convicted &b{player}&6!").replace("{player}", target.getName()));
@@ -39,8 +39,7 @@ public class CheaterCommand implements CommandExecutor {
                 Bukkit.broadcastMessage(main.getLangManager().getMessage("commands.skazany.broadcast", "&b{player}&6 has been convicted!").replace("{player}", target.getName()));
                 Bukkit.broadcastMessage("");
                 Bukkit.broadcastMessage("");
-                main.checkedList.remove(targetId);
-                main.adminsChecked.remove(((Player) sender).getUniqueId());
+                main.getCheckManager().remove(targetId);
 
                 Bukkit.dispatchCommand(sender, main.getConfig().getString("cheaterCmd").replace("{player}", target.getName()));
                 return true;

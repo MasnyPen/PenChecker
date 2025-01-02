@@ -17,40 +17,40 @@ public class isCheckerEvent implements Listener {
 
     @EventHandler
     public void onPlayerCommand(PlayerCommandPreprocessEvent event) {
-        if (main.checkedList.get(event.getPlayer().getUniqueId()) != null && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("cmd")) {
+        if (main.getCheckManager().get(event.getPlayer().getUniqueId()) != null && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("cmd")) {
             event.setCancelled(true);
             event.getPlayer().sendMessage(main.getLangManager().getMessage("events.command_use", "&6Nie możesz używać komend podczas sprawdzania!"));
         }
     }
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
-        if (main.checkedList.get(event.getPlayer().getUniqueId()) != null && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("build")) {
+        if (main.getCheckManager().isChecked(event.getPlayer().getUniqueId()) && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("build")) {
             event.setCancelled(true);
         }
     }
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
-        if (main.checkedList.get(event.getPlayer().getUniqueId()) != null && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("build")) {
+        if (main.getCheckManager().isChecked(event.getPlayer().getUniqueId()) && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("build")) {
             event.setCancelled(true);
         }
     }
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
-        if (main.checkedList.get(event.getPlayer().getUniqueId()) != null && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("interact")) {
+        if (main.getCheckManager().isChecked(event.getPlayer().getUniqueId()) && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("interact")) {
             event.setCancelled(true);
         }
     }
 
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
-        if (main.checkedList.get(event.getPlayer().getUniqueId()) != null && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("interact")) {
+        if (main.getCheckManager().isChecked(event.getPlayer().getUniqueId()) && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("interact")) {
             event.setCancelled(true);
         }
     }
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent event) {
         if (event.getCause() == PlayerTeleportEvent.TeleportCause.ENDER_PEARL) {
-            if (main.checkedList.get(event.getPlayer().getUniqueId()) != null
+            if (main.getCheckManager().isChecked(event.getPlayer().getUniqueId())
                     && main.getConfig().getBoolean("flags.enabled")
                     && main.getConfig().getStringList("flags.flags").contains("enderpearl")) {
                 event.setCancelled(true);
@@ -59,20 +59,20 @@ public class isCheckerEvent implements Listener {
     }
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
-        if (main.checkedList.get(event.getPlayer().getUniqueId()) != null && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("move")) {
+        if (main.getCheckManager().isChecked(event.getPlayer().getUniqueId()) && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("move")) {
             event.setCancelled(true);
         }
     }
 
     @EventHandler
     public void onPlayerDropItem(PlayerDropItemEvent event) {
-        if (main.checkedList.get(event.getPlayer().getUniqueId()) != null && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("drop")) {
+        if (main.getCheckManager().isChecked(event.getPlayer().getUniqueId()) && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("drop")) {
             event.setCancelled(true);
         }
     }
     @EventHandler
     public void onPlayerPickupItem(PlayerPickupItemEvent event) {
-        if (main.checkedList.get(event.getPlayer().getUniqueId()) != null && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("pickup")) {
+        if (main.getCheckManager().isChecked(event.getPlayer().getUniqueId()) && main.getConfig().getBoolean("flags.enabled") && main.getConfig().getStringList("flags.flags").contains("pickup")) {
             event.setCancelled(true);
         }
     }

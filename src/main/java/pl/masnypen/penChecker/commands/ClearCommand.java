@@ -19,17 +19,17 @@ public class ClearCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (sender instanceof Player) {
-            if (main.adminsChecked.get(((Player) sender).getUniqueId()) != null) {
-                UUID targetId = main.adminsChecked.get(((Player) sender).getUniqueId());
-                Checked checked = main.checkedList.get(targetId);
+            if (main.getCheckManager().isAdminChecking(((Player) sender).getUniqueId())) {
+                UUID targetId = main.getCheckManager().getCheckedByAdmin(((Player) sender).getUniqueId());
+                Checked checked = main.getCheckManager().get(targetId);
                 Player target = Bukkit.getPlayer(targetId);
 
-                target.teleport(checked.location);
+                target.teleport(checked.getLocation());
                 if (main.getConfig().getBoolean("admin_tp")) {
-                    ((Player) sender).teleport(checked.locationSender);
+                    ((Player) sender).teleport(checked.getLocationSender());
                 }
 
-                Bukkit.getScheduler().cancelTask(checked.taskID);
+                Bukkit.getScheduler().cancelTask(checked.getTaskID());
 
                 target.sendMessage(main.getLangManager().getMessage("commands.czysty.target.message", "&7You have been cleared of accusations!"));
                 target.sendTitle(main.getLangManager().getMessage("commands.czysty.target.title", "&6You are clean!"), main.getLangManager().getMessage("commands.czysty.target.subtitle", "&7You have been cleared of accusations!"));
@@ -42,8 +42,7 @@ public class ClearCommand implements CommandExecutor {
                 Bukkit.broadcastMessage("");
                 Bukkit.broadcastMessage("");
 
-                main.checkedList.remove(targetId);
-                main.adminsChecked.remove(((Player) sender).getUniqueId());
+                main.getCheckManager().remove(targetId);
                 return true;
             } else {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.getLangManager().getMessage("general.no_target_player", "&6You are not checking any player!"));

@@ -28,8 +28,14 @@ public class PlayerCheckCommand implements CommandExecutor, TabCompleter {
         if (sender instanceof Player) {
             if (args.length == 1 && Bukkit.getPlayerExact(args[0]) != null) {
                 YamlConfiguration checkspawn = YamlConfiguration.loadConfiguration(new File(main.getDataFolder(), "checkspawn.yml"));
+
+                if (checkspawn.getString("world-name") == null) {
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.getLangManager().getMessage("general.no_spawn", "&6The spawn point has not been set!"));
+                    return false;
+                }
+
                 Location spawn = new Location(Bukkit.getWorld(checkspawn.getString("world-name")), checkspawn.getDouble("x"),checkspawn.getDouble("y"), checkspawn.getDouble("z"), (float) checkspawn.getDouble("yaw"), (float) checkspawn.getDouble("pitch"));
-                if (spawn != null) {
+                if (spawn != null && spawn.getWorld() != null) {
                     if (sender.getName().equals(args[0])) {
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("prefix")) + " " + main.getLangManager().getMessage("general.cannot_check_self", "&6You cannot check yourself!"));
                         return false;
@@ -53,8 +59,8 @@ public class PlayerCheckCommand implements CommandExecutor, TabCompleter {
                     }, 0L, 200L).getTaskId();
 
 
-                    main.checkedList.put(player.getUniqueId(), new Checked(player.getLocation(), taskID, ((Player) sender).getUniqueId(), ((Player) sender).getLocation()));
-                    main.adminsChecked.put(((Player) sender).getUniqueId(), player.getUniqueId());
+
+                    main.getCheckManager().put(player.getUniqueId(), player.getLocation(), taskID, ((Player) sender).getUniqueId(), ((Player) sender).getLocation());
                     player.teleport(spawn);
                     if (main.getConfig().getBoolean("admin_tp")) {
                         ((Player) sender).teleport(spawn);
