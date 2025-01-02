@@ -1,5 +1,6 @@
 package pl.masnypen.penChecker;
 
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -31,6 +32,7 @@ public final class Main extends JavaPlugin {
         this.saveDefaultConfig();
 
         this.langManager = new LangManager(getDataFolder(), this);
+        Metrics metrics = new Metrics(this, 24330);
 
         getLogger().info("Plugin has been enabled!");
         getLogger().info("PenChecker!");
