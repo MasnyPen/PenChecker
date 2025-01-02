@@ -27,7 +27,7 @@ commands:
     # Message displayed in case of an error when saving the spawn.
     error: "&eAn error occurred while saving the spawn."
 
-  sprawdz:
+  startcheck:
     # Message displayed when the command is used incorrectly.
     usage: "&6Incorrect command usage! /sprawdz <player>"
 
@@ -47,7 +47,7 @@ commands:
       # Subtitle displayed to the player being checked on their screen.
       subtitle: "&7Join the Discord voice channel you're-being-checked"
 
-  czysty:
+  markclean:
     # Broadcast message when a player is declared clean.
     broadcast: "&b{player}&6 is clean!"
 
@@ -64,7 +64,7 @@ commands:
       # Subtitle displayed to the checked player on their screen.
       subtitle: "&7You have been cleared of all suspicions!"
 
-  skazany:
+  markguilty:
     # Broadcast message when a player is marked as guilty.
     broadcast: "&b{player}&6 has been convicted!"
 

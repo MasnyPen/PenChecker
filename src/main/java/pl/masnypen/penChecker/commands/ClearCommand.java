@@ -31,14 +31,14 @@ public class ClearCommand implements CommandExecutor {
 
                 Bukkit.getScheduler().cancelTask(checked.getTaskID());
 
-                target.sendMessage(main.getLangManager().getMessage("commands.czysty.target.message", "&7You have been cleared of accusations!"));
-                target.sendTitle(main.getLangManager().getMessage("commands.czysty.target.title", "&6You are clean!"), main.getLangManager().getMessage("commands.czysty.target.subtitle", "&7You have been cleared of accusations!"));
+                target.sendMessage(main.getLangManager().getMessage("commands.markclean.target.message", "&7You have been cleared of accusations!"));
+                target.sendTitle(main.getLangManager().getMessage("commands.markclean.target.title", "&6You are clean!"), main.getLangManager().getMessage("commands.markclean.target.subtitle", "&7You have been cleared of accusations!"));
 
-                sender.sendMessage(main.getLangManager().getMessage("commands.czysty.sender", "&6Successfully cleared &b{player}&6 of accusations!").replace("{player}", target.getName()));
+                sender.sendMessage(main.getLangManager().getMessage("commands.markclean.sender", "&6Successfully cleared &b{player}&6 of accusations!").replace("{player}", target.getName()));
 
                 Bukkit.broadcastMessage("");
                 Bukkit.broadcastMessage("");
-                Bukkit.broadcastMessage(main.getLangManager().getMessage("commands.czysty.broadcast", "&b{player}&6 is clean!").replace("{player}", target.getName()));
+                Bukkit.broadcastMessage(main.getLangManager().getMessage("commands.markclean.broadcast", "&b{player}&6 is clean!").replace("{player}", target.getName()));
                 Bukkit.broadcastMessage("");
                 Bukkit.broadcastMessage("");
 

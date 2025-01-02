@@ -27,7 +27,7 @@ commands:
     # Wiadomość wyświetlana w przypadku błędu podczas zapisywania spawnu.
     error: "&eWystąpił błąd przy zapisywaniu"
 
-  sprawdz:
+  startcheck:
     # Wiadomość wyświetlana, gdy komenda jest użyta w zły sposób.
     usage: "&6Złe użycie komendy! /sprawdz <gracz>"
 
@@ -47,7 +47,7 @@ commands:
       # Podtytuł wyświetlany sprawdzanemu graczowi na ekranie.
       subtitle: "&7Wbij na discorda na kanał głosowy jestes-sprawdzany"
 
-  czysty:
+  markclean:
     # Wiadomość ogłaszana na serwerze, gdy gracz zostaje uznany za czystego.
     broadcast: "&b{player}&6 jest czysty!"
 
@@ -64,7 +64,7 @@ commands:
       # Podtytuł wyświetlany sprawdzanemu graczowi na ekranie.
       subtitle: "&7Oczyszczono cię z zarzutów!"
 
-  skazany:
+  markguilty:
     # Wiadomość ogłaszana na serwerze, gdy gracz zostaje skazany.
     broadcast: "&b{player}&6 został skazany!"
 
