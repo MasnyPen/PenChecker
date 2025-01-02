@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.*;
 import pl.masnypen.penChecker.Main;
@@ -99,6 +100,13 @@ public class isCheckerEvent implements Listener {
         ((main.getConfig().getBoolean("flags.enabled") &&
                 main.getConfig().getStringList("flags.flags").contains("pickup")) ||
                 !main.getConfig().getBoolean("useCheckLocation"))) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onAttack(EntityDamageByEntityEvent event) {
+        if (main.getCheckManager().isChecked(event.getEntity().getUniqueId())){
             event.setCancelled(true);
         }
     }
