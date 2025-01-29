@@ -28,6 +28,13 @@ PenChecker is a plugin for Minecraft servers that allows administrators to monit
 # Prefix for all plugin messages
 prefix: "&7[&bPenChecker&7]"
 
+# if set to false will freeze the player during the check 
+# if set to true will teleport the player to the check location
+useCheckLocation: false
+# Admin teleport to the check location
+# if useCheckLocation is true
+admin_tp: true
+
 # Command used to ban a player when they are flagged as a cheater
 cheaterCmd: "ban {player} cheaty"
 
@@ -40,6 +47,4 @@ flags:
   # Flags: build (Break/Place), move, cmd, interact, chat, enderpearl, drop, pickup
   flags: ["build", "cmd", "interact", "chat", "enderpearl", "drop", "pickup"]
 
-# Admin teleport to the check location
-admin_tp: true
 ```
